@@ -73,8 +73,12 @@ body {
 	href="./resource/ico/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="./resource/ico/favicon.png">
 <script>
+var ip=location.hostname;
+var puerto=location.port;
 	var wsocket;
-	var serviceLocation = "ws://0.0.0.0:8080/hascode/chat/";
+       
+	var serviceLocation = "ws://localhost:53614/javaee7-websocket-chat/chat/";
+        console.log(ip+"  "+puerto+  "  ruta:"+serviceLocation);
 	var $nickName;
 	var $message;
 	var $chatWindow;
@@ -97,6 +101,7 @@ body {
 
 	function connectToChatserver() {
 		room = $('#chatroom option:selected').val();
+                console.log(room);
 		wsocket = new WebSocket(serviceLocation + room);
 		wsocket.onmessage = onMessageReceived;
 	}
@@ -142,7 +147,7 @@ body {
 		<form class="form-signin">
 			<h2 class="form-signin-heading">Chat sign in</h2>
 			<label for="nickname">Nickname</label> <input type="text"
-				class="input-block-level" placeholder="Nickname" id="nickname">
+				class="input-block-level" placeholder="Usuario" id="nickname">
 			<div class="btn-group">
 				<label for="chatroom">Chatroom</label> <select size="1"
 					id="chatroom">
@@ -153,7 +158,7 @@ body {
 				</select>
 			</div>
 			<button class="btn btn-large btn-primary" type="submit"
-				id="enterRoom">Sign in</button>
+				id="enterRoom">Entrar</button>
 		</form>
 	</div>
 	<!-- /container -->
